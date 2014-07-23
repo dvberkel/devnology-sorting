@@ -1,8 +1,22 @@
 #! /usr/bin/env node
 
+var path = require('path');
+var fs = require('fs');
+
+if (process.argv.length <= 2) {
+	var command = path.basename(__filename);
+	console.log('usage: %s SORTER', command);
+	console.log('where SORTER is one of:');
+	fs.readdirSync(__dirname).filter(function(file){
+		return fs.statSync(file).isDirectory();
+	}).forEach(function(file){
+		console.log('\t%s', file);
+	});
+	process.exit(0);
+}
 var readline = require('readline');
 
-var sorter = require('./standard');
+var sorter = require(path.join(__dirname, process.argv[2]));
 
 var rl = readline.createInterface({
 	input: process.stdin,
