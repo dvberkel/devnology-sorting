@@ -1,0 +1,18 @@
+#! /usr/bin/env node
+
+var readline = require('readline');
+
+var sorter = require('./standard');
+
+var rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+});
+
+rl.on('line', function(data){
+	var numbers = data.split(/,/).map(function(number){
+		return parseInt(number);
+	});
+	var sorted = sorter(numbers);
+	console.log(sorted.join(','));
+})
