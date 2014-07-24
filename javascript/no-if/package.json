@@ -10,5 +10,9 @@
     "sort"
   ],
   "author": "Daan van Berkel",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^1.21.0",
+    "must": "^0.12.0"
+  }
 }
